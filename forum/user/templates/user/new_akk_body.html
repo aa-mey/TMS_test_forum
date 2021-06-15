@@ -1,0 +1,50 @@
+{% load static %}
+<main class="signup__main">
+    <img class="signup__bg" src="{% static 'images/signup-bg.png' %}" alt="bg">
+
+    <div class="container">
+        <div class="signup__container">
+            <div class="signup__logo">
+                <a href="#"><img src="{% static 'images/Logo_Forum.svg' %}" alt="logo">Unity</a>
+            </div>
+
+            <div class="signup__head">
+                <h3>Create a New Unity Account</h3>
+                <p>By singin up you can start posting, replaying to topics, earn badges, favorite, vote topics and many more.</p>
+            </div>
+            <div class="signup__form">
+                <form method="post" action="{% url 'signup' %}">
+                    {% csrf_token %}
+                    
+                <div class="signup__section">
+                    <p>Username</p>
+                    <label class="signup__label" for="username">{{ registration_form.username }}</label>
+                    <input type="text" class="form-control" id="username">
+                </div>
+                <div class="signup__section">
+                    <p>email</p>
+                    <label class="signup__label" for="email">{{ registration_form.email }}</label>
+                    <input type="text" class="form-control" id="email">
+                </div>
+                <div class="signup__section">
+                    <p>password</p>
+                    <label class="signup__label" for="password">{{ registration_form.password }}</label>
+                    <input type="text" class="form-control" id="password">    
+                </div>
+                <div class="signup__section">
+                    <p>password_repeat</p>
+                    <label class="signup__label" for="password_repeat">{{ registration_form.password_repeat }}</label>
+                    <input type="text" class="form-control" id="password_repeat">    
+                </div>
+                <div class="signup__section">
+                    <p>Upload avatar</p>
+                    <label class="signup__label" for="icon">{{ registration_form.icon }}</label>
+                    <input type="text" class="form-control" id="email">
+                </div>
+
+                <input type="submit" class="btn btn-success" value="Create New Account">
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
