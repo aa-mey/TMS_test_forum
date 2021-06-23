@@ -1,0 +1,97 @@
+{% load static %}
+<main>
+    <div class="container">
+        <div class="create">
+            <div class="create__head">
+                <div class="create__title"><img src="{% static 'images/New_Topic.svg' %}" alt="New topic">Create New Topic</div>
+            </div>
+            <form method="post" action="{% url 'new_topic' board_id=board.id %}">
+                {% if form_partner.non_field_errors %}
+            {{ form_partner.non_field_errors }}
+            {% endif %}
+            {% csrf_token %}
+            <div> 
+                <label class="create__label" for="subject">Subject</label>
+                <div class="input">
+                    {{ subject_f.subject.errors }}
+                    {{ subject_f.subject }}
+                </div>
+            </div>
+            <div>
+                <label class="create__label" for="subject">Message</label>
+                <div class="input">
+                    {{ message_f.message.errors }}
+                    {{ message_f.message }}
+                </div>
+            </div>
+            <div class="create__section">
+                <label class="create__label" for="tags">Add Tags</label>
+                <input type="text" class="form-control" id="tags" placeholder="e.g. nature, science">
+            </div>
+            <div class="create__advanced">
+                <div class="row">
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="create__section">
+                            <label class="create__label">Who can see this?</label>
+                            <div class="create__radio">
+                                <label class="create__box">
+                                    <label class="custom-radio">
+                                        <input type="radio" name="can-see" checked="checked">
+                                        <i></i>
+                                    </label>
+                                    <span>Everyone</span>
+                                </label>
+                                <label class="create__box">
+                                    <label class="custom-radio">
+                                        <input type="radio" name="can-see">
+                                        <i></i>
+                                    </label>
+                                    <span>Only Friends</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xl-3">
+                        <div class="create__section">
+                            <label class="create__label">Share on Social?</label>
+                            <div class="create__radio">
+                                <label class="create__box">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="share-social" checked="checked">
+                                        <i></i>
+                                    </label>
+                                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                                </label>
+                                <label class="create__box">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="share-social" checked="checked">
+                                        <i></i>
+                                    </label>
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </label>
+                                <label class="create__box">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="share-social">
+                                        <i></i>
+                                    </label>
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="create__footer">
+                <div class="conteiner">
+                    <div>
+                        <div class="create__footer">
+                        <a href="{% url 'home' %}" class="create__btn-cansel btn">Back to Home</a>
+                        <input type="submit" value="Create Board" />
+                    </div>
+                <input type="submit" value="Create Topic" />
+            </div>
+        </form>
+        </div>
+    </div>
+</main>

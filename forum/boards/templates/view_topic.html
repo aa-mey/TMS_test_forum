@@ -1,0 +1,21 @@
+{% extends 'base_template.html' %}
+
+{% block header %} 
+    {% include 'base_template/header.html'  %}
+{% endblock header %}
+
+{% block menu %}
+    {% include 'base_template/categories_single_topic.html' %}     
+{% endblock menu %}
+
+{% block topic %} 
+    {% include 'base_template/main_single_topic.html' %}
+{% endblock topic %}
+
+{% block comments %} 
+    {% include 'base_template/add_message_to_topic.html' %}
+{% endblock comments %}
+
+{% block footer %}
+    {% include 'base_template/footer.html' %}
+{% endblock footer %}
