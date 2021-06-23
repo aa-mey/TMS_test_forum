@@ -57,7 +57,7 @@ class UserForm(forms.ModelForm):
 
     def clean(self):
         if self.cleaned_data["password"] != self.cleaned_data["password_repeat"]:
-            raise forms.ValidationError("passwords are not the same")
+            raise forms.ValidationError("Пароли разные, переделай ~~")
         return super().clean()
     
     def save(self, commit:bool=False):

@@ -44,7 +44,7 @@
                     <div class="posts__section-left">
                         <div class="posts__topic">
                             <div class="posts__content">
-                                <a href="{% url 'board_topics' board.id %}">
+                                <a href="{% url 'view_topic' id_board=board.id id_topic=topic.id %}">
                                     <h3>{{ topic.subject }}</h3>
                                 </a>
                   

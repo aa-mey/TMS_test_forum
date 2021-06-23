@@ -17,11 +17,11 @@ class Topic(models.Model):
     user_create = models.ForeignKey(User, related_name='topics',  on_delete=models.CASCADE)
     subject = models.CharField(max_length=250)
     created = models.DateTimeField(auto_now_add=True)
-    #category = models.CharField(max_length=150)
-    # tags = 
+    #tags = models.CharField(max_length=150)
 
     class Meta:
         db_table = 'topic'
+        unique_together = ('board', 'subject',)
 
 class Post(models.Model):
     post_by = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
@@ -32,4 +32,6 @@ class Post(models.Model):
 
     class Meta:
         db_table = 'post'
+        ordering = ['creation_time']
+
 

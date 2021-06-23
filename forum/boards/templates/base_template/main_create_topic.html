@@ -5,15 +5,25 @@
             <div class="create__head">
                 <div class="create__title"><img src="{% static 'images/New_Topic.svg' %}" alt="New topic">Create New Topic</div>
             </div>
-            <form method="post" action="{% url 'new_topic' pk=board.pk %}">
+            <form method="post" action="{% url 'new_topic' board_id=board.id %}">
+                {% if form_partner.non_field_errors %}
+            {{ form_partner.non_field_errors }}
+            {% endif %}
             {% csrf_token %}
-            <div class="create__section">
-                {{ subject_f }}
+            <div> 
+                <label class="create__label" for="subject">Subject</label>
+                <div class="input">
+                    {{ subject_f.subject.errors }}
+                    {{ subject_f.subject }}
+                </div>
             </div>
-            <div class="create__section create__textarea">
-                {{ message_f }}
+            <div>
+                <label class="create__label" for="subject">Message</label>
+                <div class="input">
+                    {{ message_f.message.errors }}
+                    {{ message_f.message }}
+                </div>
             </div>
-        
             <div class="create__section">
                 <label class="create__label" for="tags">Add Tags</label>
                 <input type="text" class="form-control" id="tags" placeholder="e.g. nature, science">
@@ -73,7 +83,12 @@
                 </div>
             </div>
             <div class="create__footer">
-                <a href="#" class="create__btn-cansel btn">Cancel</a>
+                <div class="conteiner">
+                    <div>
+                        <div class="create__footer">
+                        <a href="{% url 'home' %}" class="create__btn-cansel btn">Back to Home</a>
+                        <input type="submit" value="Create Board" />
+                    </div>
                 <input type="submit" value="Create Topic" />
             </div>
         </form>

@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth import authenticate, login as log_in, logout as log_out
 from django.contrib.auth.decorators import  login_required
 from django.views import View
+from .models import User as usermodel
 
 # Create your views here.
 # def profile(request):
@@ -56,7 +57,8 @@ class Registration(View):
             return redirect(reverse('home'))
     
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
+        print(form)
         if form.is_valid():
             form.save()
             return redirect(reverse('login'))

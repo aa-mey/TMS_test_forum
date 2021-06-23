@@ -11,10 +11,16 @@
                 </div>
                 <nav class="dropdown dropdown--design-01" data-dropdown-list="logo">
                     <ul class="dropdown__catalog">
-                        <li><a href="index.html">Home Page</a></li>
-                        <li><a href="single-topic.html">Single Topic Page</a></li>
-                        <li><a href="simple-signup.html">Sign up Page</a></li>
-                        <li><a href="create-topic.html">Create Topic Page</a></li>
+                        <li><a href="{% url 'home' %}">Home Page</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">LogOut</a></li>
+                        {% else %}
+                        <li><a href="{% url 'signup' %}">Register New User</a></li>
+                        {% endif %}
+                        {% if not user.is_authenticated %}
+                        <li><a href="{% url 'login' %}">Login to Profile</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'new_board' %}">Create New Board</a></li>
                     </ul>
                 </nav>
             </div>
@@ -22,7 +28,7 @@
                 <form action="#">
                     <label>
                         <i class="icon-Search js-header-search-btn-open"></i>
-                        <input type="search" placeholder="Search all forums" class="form-control">
+                        <input type="search" placeholder="" class="form-control">
                     </label>
                 </form>
             </div>
@@ -71,11 +77,6 @@
                </div>
             </div>
             {% endif%}
-        <div class="conteiner">
-            <div class="header__offset-btn">
-                <a href="{% url 'new_board' %}"><img src="{% static 'images/New_Topic.svg' %}" alt="New Board"></a>
-            </div>
-        </div>
         </div>
     </div>
 </header>
