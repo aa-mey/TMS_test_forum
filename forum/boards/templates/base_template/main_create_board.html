@@ -1,0 +1,30 @@
+{% load static %}
+<main>
+    <div class="container">
+        <div class="create">
+            <div class="create__head">
+                <div class="create__title"><img src="{% static 'images/New_Topic.svg' %}" alt="New topic">Create New Board</div>
+            </div>
+            <form  method="post" action="{% url 'new_board' %}">
+            {% csrf_token %}
+            <div class="create__section">
+                <label class="create__label" for="title">Subject</label>
+                {{ board_form.name.errors }}
+                {{ board_form.name }}
+            </div>
+            <div class="create__section">
+                <label class="create__label" for="title">Description</label>
+                {{ board_form.description.errors }}
+                {{ board_form.description }}
+            </div>   
+        <div class="conteiner">
+            <div>
+                <div class="create__footer">
+                <a href="{% url 'home' %}" class="create__btn-cansel btn">Back to Home</a>
+                <input type="submit" value="Create Board" />
+            </div>
+        </div>
+        </form>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,65 @@
+
+<main>
+    <div class="container">   
+        <div class="topics">
+            <div class="topics__heading">
+                <h2 class="topics__heading-title">{{ topic.subject }}</h2>
+                <div class="topics__heading-info">
+                    <a href="#" class="category"><i class="bg-3ebafa"></i> Exchange</a>
+                    <div class="tags">
+                        <a href="#" class="bg-4f80b0">gaming</a>
+                        <a href="#" class="bg-424ee8">nature</a>
+                        <a href="#" class="bg-36b7d7">entertainment</a>
+                    </div>
+                </div>
+            </div>
+            <div class="topics__body">
+                <div class="topics__content">
+                    <div class="topic">
+                        <div class="topic__head">
+                            <div class="topic__avatar">
+                                <a href="#" class="avatar"><img src="fonts/icons/avatars/B.svg" alt="avatar"></a>
+                            </div>
+                            <div class="topic__caption">
+                                <div class="topic__name">
+                                    <a href="#">{{ topic.user_create.username }}</a>
+                                </div>
+                                
+                                <div class="topic__date"><i class="icon-Watch_Later"></i>{{ pined_post.creation_time }}</div>
+                            </div>
+                        </div>
+                        <div class="topic__content">
+                            <div class="topic__text">
+                                <p>{{ pined_post.message }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% for post in posts %}
+                    <div class="topic">
+                        <div class="topic__head">
+                            <div class="topic__avatar">
+                                <a href="#" class="avatar"><img src="fonts/icons/avatars/N.svg" alt="avatar"></a>
+                            </div>
+                            <div class="topic__caption">
+                                <div class="topic__name">
+                                    <a href="#">{{ post.post_by.username }}</a>
+                                </div>
+                                <div class="topic__date">
+                                    <i class="icon-Watch_Later"></i>{{ post.creation_time }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="topic__content">
+                            <div class="topic__text">
+                                <p>{{ post.message }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endfor %} 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

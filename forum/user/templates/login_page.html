@@ -1,0 +1,54 @@
+{% extends 'base_template.html' %}
+{% csrf_token %}
+{% block header %} 
+    {% include 'base_template/header.html' %}
+{% endblock header %}
+
+{% block topic %} 
+<div class="container">
+<div class="contact-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-sm-12">
+                <form action="{% url 'login' %}" method="post">
+                    {% if login_form.non_field_errors %}
+                        {{ login_form.non_field_errors}}
+                    {% endif %}
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{login_form.username}}
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{login_form.password}}
+                                <div class="help-block with-errors">
+                                    {% if login_form.username.errors %}
+                                        {{ login_form.non_field_errors}}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="submit-button text-center">
+                                <input class="btn hvr-hover" id="submit" type="submit" value="Login"/>
+                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock topic %}
+
+{% block footer %}
+    {% include 'base_template/footer.html' %}
+{% endblock footer %}

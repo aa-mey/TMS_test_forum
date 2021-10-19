@@ -1,0 +1,11 @@
+<div class="container"> 
+<form method="post" action="{% url 'new_message' id_board=board.id id_topic=topic.id %}">
+    {% csrf_token %}
+    <input type="text" name="message" style="width: 800px; height: 145px;" value="{{ comment_form.message }}">
+    <div class="conteiner">
+        <div>
+            <div class="create__footer">
+            <input type="submit" value="Comment" />
+    </div>
+  </form>
+</div> 
